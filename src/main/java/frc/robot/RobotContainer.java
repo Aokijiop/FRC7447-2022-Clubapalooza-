@@ -10,7 +10,11 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import frc.robot.commands.BoostBoolean;
 import frc.robot.commands.DriveManually;
+import frc.robot.commands.DumperHold;
+import frc.robot.commands.DumperIntake;
+import frc.robot.commands.DumperMoveLimitSwitch;
 import frc.robot.commands.HellaMasculineLED;
+import frc.robot.commands.Rainbow;
 import frc.robot.commands.DumperVomit;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.Dumper;
@@ -36,7 +40,11 @@ public class RobotContainer {
   private final DriveManually m_driveManually;
   private final BoostBoolean m_boost;
   private final HellaMasculineLED m_HellaMasculineLED;
+  private final Rainbow m_rainbow;
   private final DumperVomit m_dumperVomit;
+  private final DumperIntake m_dumperIntake;
+  private final DumperMoveLimitSwitch m_dumperMoveLimitSwitch;
+  private final DumperHold m_dumperHold;
 
   // Autonomous Command Chooser
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -68,7 +76,12 @@ public class RobotContainer {
     m_driveTrain.setDefaultCommand(m_driveManually);
     m_boost = new BoostBoolean(m_driveTrain);
     m_HellaMasculineLED = new HellaMasculineLED(m_led);
+    m_rainbow = new Rainbow(m_led);
     m_dumperVomit = new DumperVomit(m_dumper);
+    m_dumperMoveLimitSwitch = new DumperMoveLimitSwitch(m_dumper);
+    m_dumperHold = new DumperHold(m_dumper);
+    m_dumper.setDefaultCommand(m_dumperHold);
+    m_dumperIntake = new DumperIntake(m_dumper);
 
     // Auton Chooser
     m_chooser = new SendableChooser<>();
@@ -100,9 +113,13 @@ public class RobotContainer {
   private void configureButtonBindings() {
     // bButton.toggleWhenPressed(m_driveForwardTimed, false);
     RTrigger.whenHeld(m_dumperVomit);
+    LTrigger.whenHeld(m_dumperIntake);
+    LButton.toggleWhenPressed(m_dumperMoveLimitSwitch);
+    RButton.whenHeld(m_boost);
     leftJoystickPress.whenHeld(m_boost);
     rightJoystickPress.whenHeld(m_boost);
     aButton.toggleWhenPressed(m_HellaMasculineLED);
+    bButton.toggleWhenPressed(m_rainbow);
   }
 
   /**

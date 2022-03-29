@@ -8,40 +8,24 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.LEDeez;
 
-public class HellaMasculineLED extends CommandBase {
-  /** Creates a new HellaMasculineLED. */
+public class Rainbow extends CommandBase {
   LEDeez m_led;
-  Timer m_timer;
 
-  public HellaMasculineLED(LEDeez l) {
+  /** Creates a new Rainbow. */
+  public Rainbow(LEDeez l) {
     // Use addRequirements() here to declare subsystem dependencies.
     m_led = l;
-    m_timer = new Timer();
     addRequirements(m_led);
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {
-    m_timer.reset();
-    m_timer.start();
-  }
+  public void initialize() {}
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if (m_timer.get() < 0.2) {
-      m_led.purpleBlueWhite();
-    }
-    if (m_timer.get() < 0.4) {
-      m_led.purpleBlueWhite2();
-    }
-    if (m_timer.get() < 0.6) {
-      m_led.purpleBlueWhite3();
-    }
-    if (m_timer.get() > 0.8) {
-      m_timer.reset();
-    }
+    m_led.rainbow();
   }
 
   // Called once the command ends or is interrupted.

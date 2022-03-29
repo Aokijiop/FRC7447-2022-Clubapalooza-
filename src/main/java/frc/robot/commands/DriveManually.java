@@ -28,9 +28,9 @@ public class DriveManually extends CommandBase {
   @Override
   public void execute() {
     if (!m_driveTrain.RButtonHeld) {
-      m_driveTrain.driveManually(RobotContainer.m_joystick, Constants.tSpeed);
+      m_driveTrain.driveManually(RobotContainer.m_joystick, Constants.mSpeed, Constants.tSpeed);
     } else {
-      m_driveTrain.driveManually(RobotContainer.m_joystick, Constants.tSpeedBoost);
+      m_driveTrain.driveManually(RobotContainer.m_joystick, Constants.speedBoost, Constants.tSpeedBoost);
     }
       SmartDashboard.putNumber("Movement speed: ", RobotContainer.m_joystick.getRawAxis(Constants.y_axis));
       m_driveTrain.printEncoderInfo(); 

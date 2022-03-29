@@ -64,6 +64,7 @@
       "/LiveWindow/DriveTrain": "Subsystem",
       "/LiveWindow/Dumper": "Subsystem",
       "/LiveWindow/Intake": "Subsystem",
+      "/LiveWindow/LEDeez": "Subsystem",
       "/LiveWindow/PneumaticShooter": "Subsystem",
       "/LiveWindow/Shooter": "Subsystem",
       "/LiveWindow/Ungrouped/DifferentialDrive[1]": "DifferentialDrive",

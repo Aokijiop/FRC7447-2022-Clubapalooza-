@@ -213,8 +213,8 @@ public class DriveTrain extends SubsystemBase {
 
   // Other Commands
   // Might need to manually add a negative sign later if invert doesn't work
-  public void driveManually(Joystick m_joystick, double turnSpeed) {
-    m_drive.arcadeDrive(0, -m_joystick.getRawAxis(Constants.z_axis) * turnSpeed); 
+  public void driveManually(Joystick m_joystick, double speed, double turnSpeed) {
+    m_drive.arcadeDrive(m_joystick.getRawAxis(Constants.y_axis) * speed, -m_joystick.getRawAxis(Constants.z_axis) * turnSpeed); 
   }
 
   public void turn(double rotateSpeed) {
